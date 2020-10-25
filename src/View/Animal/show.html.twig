@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="card m-auto">
+    <div class="card-body">
+        <h5 class="card-title">{{ animal.name }}</h5>
+        <p class="card-text">Age : {{animal.age}} Year(s)</p>
+        <p class="card-text">Race : {{animal.race_name}}</p>
+        <p class="card-text">Refuge : {{animal.refuge_name}}</p>
+        <p class="card-text">Tattoo : {{animal.tattoo}}</p>
+        <p class="card-text">Vaccined : {{animal.is_vaccined ? 'Yes' : 'No'}}</p>
+        <p class="card-text">Sterilized : {{animal.is_sterilized ? 'Yes' : 'No'}}</p>
+        <p class="card-text">Adopted : {{animal.adopted_on ? 'Yes' : 'No'}}</p>
+    </div>
+    <div class="card-footer text-center">
+        <a href="/animal/show/{{ animal.id }}" class="btn btn-sm btn-success my-2"><i class="fas fa-eye"></i></a>
+        <a href="/animal/edit/{{ animal.id }}" class="btn btn-sm btn-warning my-2"><i class="fas fa-edit"></i></a>
+        <a href="/animal/delete/{{ animal.id }}" class="btn btn-sm btn-danger my-2"><i class="fas fa-trash"></i></a>
+    </div>
+</div>
+
+{% endblock %}

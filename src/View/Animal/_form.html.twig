@@ -1,0 +1,51 @@
+<form method="post">
+    {{dump(animal)}}
+    <input type="hidden" value="{{ animal.id }}" name="id">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" value="{{ animal.name }}" name="name">
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" id="age" value="{{ animal.age }}" name="age">
+    </div>
+    <div class="form-group">
+        <label for="tatoo">Tatoo</label>
+        <input type="text" class="form-control" id="tattoo" value="{{ animal.tattoo }}" name="tattoo">
+    </div>
+    <div class="form-group">
+        <label for="species">Select race</label>
+        <select class="form-control" id="race_id" name="race_id">
+            <option value={{animal.race_id}}>{{animal.race_name}}</option>
+            {% for race in races %}
+            {% if race.id != animal.race_id %}
+            <option value={{race.id}}>{{race.name}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="species">Select refuge</label>
+        <select class="form-control" id="refuge_id" name="refuge_id">
+            <option value={{animal.refuge_id}}>{{animal.refuge_name}}</option>
+            {% for refuge in refuges %}
+            {% if refuge.id != animal.refuge_id %}
+            <option value={{refuge.id}}>{{refuge.name}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="is_sterilized" value="true"
+                name="is_sterilized" {{animal.is_sterilized ? 'checked' : ''}}>
+            <label class="form-check-label" for="is_sterilized">is_sterilized</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="is_vaccined" value="true" 
+                name="is_vaccined" {{animal.is_vaccined ? 'checked' : ''}}>
+            <label class="form-check-label" for="is_vaccined">is_vaccined</label>
+        </div>
+    </div>
+    <button type="submit" value="Valider" class="btn btn-primary">Submit</button>
+</form>

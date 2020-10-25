@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Edit race {{ race.name }}</h1>
+    {% include 'race/_form.html.twig' %}
+    <div class="text-right">
+        <a href="/race/show/{{ race.id }}">Back</a>
+    </div>
+{% endblock %}

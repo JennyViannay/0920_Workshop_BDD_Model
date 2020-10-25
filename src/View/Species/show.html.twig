@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<h1>species {{ species.name }}</h1>
+<p>{{ species.id }}. {{ species.name }}</p>
+<a href="/species/show/{{ species.id }}" class="btn btn-sm btn-success my-2"><i class="fas fa-eye"></i></a>
+<a href="/species/edit/{{ species.id }}" class="btn btn-sm btn-warning my-2"><i class="fas fa-edit"></i></a>
+<a href="/species/delete/{{ species.id }}" class="btn btn-sm btn-danger my-2"><i class="fas fa-trash"></i></a>
+{% endblock %}

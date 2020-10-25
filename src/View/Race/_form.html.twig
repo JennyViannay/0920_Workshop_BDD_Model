@@ -1,0 +1,19 @@
+<form method="post">
+    <input type="hidden" value="{{ race.id }}" name="id">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" value="{{ race.name }}" name="name">
+    </div>
+    <div class="form-group">
+        <label for="species">Select species</label>
+        <select class="form-control" id="species" name="species">
+            <option value={{race.species_id}}>{{race.species_name}}</option>
+            {% for species in speciess %}
+            {% if species.id != race.species_id %}
+            <option value={{species.id}}>{{species.name}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" value="Valider" class="btn btn-primary">Submit</button>
+</form>

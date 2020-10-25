@@ -83,3 +83,6 @@ ALTER TABLE race ADD CONSTRAINT FK_race_species FOREIGN KEY (species_id) REFEREN
 
 INSERT INTO refuge (`name`, `address`) VALUES ('SPA Paris', 'La Fayette, Paris 10');
 INSERT INTO refuge (`name`, `address`) VALUES ('SPA Marseille', 'Jaures, Marseille 4');
+
+
+
