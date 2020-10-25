@@ -28,12 +28,14 @@ class RefugeManager extends AbstractManager
     public function insert(array $refuge): int
     {
         // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`name`, `address`) VALUES (:name, :address)");
+        $statement = $this->pdo->prepare(
+            "INSERT INTO " . self::TABLE . " (`name`, `address`) VALUES (:name, :address)"
+        );
         $statement->bindValue('name', $refuge['name'], \PDO::PARAM_STR);
         $statement->bindValue('address', $refuge['address'], \PDO::PARAM_STR);
 
         if ($statement->execute()) {
-            return (int)$this->pdo->lastInsertId();
+            return (int) $this->pdo->lastInsertId();
         }
     }
 
@@ -54,11 +56,13 @@ class RefugeManager extends AbstractManager
      * @param array $refuge
      * @return bool
      */
-    public function update(array $refuge):bool
+    public function update(array $refuge): bool
     {
 
         // prepared request
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `name` = :name, `address` = :address WHERE id=:id");
+        $statement = $this->pdo->prepare(
+            "UPDATE " . self::TABLE . " SET `name` = :name, `address` = :address WHERE id=:id"
+        );
         $statement->bindValue('id', $refuge['id'], \PDO::PARAM_INT);
         $statement->bindValue('name', $refuge['name'], \PDO::PARAM_STR);
         $statement->bindValue('address', $refuge['address'], \PDO::PARAM_STR);
