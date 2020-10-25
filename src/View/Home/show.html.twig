@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="jumbotron bg-dark mt-5 text-white">
+    <h2 class="display-4">{{animal.name}}</h2>
+    <div class="row mt-5">
+        <div class="col-lg-4 col-md-6 col-xs-12">
+            <p class="card-text">Age : {{animal.age}} Year(s)</p>
+            <p class="card-text">Race : {{animal.race_name}}</p>
+            <p class="card-text">Refuge : {{animal.refuge_name}}</p>
+            <p class="card-text">Tattoo : {{animal.tattoo}}</p>
+            <p class="card-text">Vaccined : {{animal.is_vaccined ? 'Yes' : 'No'}}</p>
+            <p class="card-text">Sterilized : {{animal.is_sterilized ? 'Yes' : 'No'}}</p>
+            <p class="card-text">Adopted : {{animal.adopted_on ? 'Yes' : 'No'}}</p>
+        </div>
+        <div class="col-lg-8 col-md-6 col-xs-12">
+            <div class="row">
+                {% for image in images %}
+                <div class="col-lg-4 col-md-6 col-xs-12 my-2 mx-auto">
+                    <img src="{{image.url}}" alt="{{animal.name}}" class="img-fluid">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if animal.adopter_id is empty %}
+        <div class="col-12 text-right">
+            <a href="/home/adopting/{{animal.id}}" class="btn btn-primary">Adopting !</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

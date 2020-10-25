@@ -1,5 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
+<div class="row mt-5">
+    {% for animal in animals %}
+    <div class="col-lg-4 col-md-6 col-sx-12">
+        <div class="card my-2">
+            <img src="{{ animal.image }}" class="card-img-top" alt="{{ animal.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ animal.name }}</h5>
+                <p class="card-text">{{ animal.age }} an(s)</p>
+                <p class="card-text">{{ animal.refuge_name }}</p>
+                <a href="/home/show/{{ animal.id }}" class="btn btn-primary">Voir +</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

@@ -26,15 +26,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                {# <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                {% if session.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/account/">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="/security/logout">Logout</a>
                 </li>
+                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li> #}
+                    <a class="nav-link" href="/security/login">Login</a>
+                </li>
+                {% endif %}
+                {% if session.user.role_id == 1 %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,6 +52,7 @@
                         <a href="/animal/index" class="nav-link">Animals</a>
                     </div>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

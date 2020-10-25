@@ -145,4 +145,31 @@ class AnimalManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    /**
+     * @param array $animal
+     */
+    public function isAdopting(array $animal): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET adopted_on=:adopted_on, adopter_id=:adopter_id WHERE id=:id"
+        );
+        $statement->bindValue('id', $animal['id'], \PDO::PARAM_INT);
+        $statement->bindValue('adopted_on', $animal['adopted_on'], \PDO::PARAM_STR);
+        $statement->bindValue('adopter_id', $animal['adopter_id'], \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    /**
+     * @param int $id
+     */
+    public function selectByAdopter(int $id): array
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM " .$this->table ." WHERE adopter_id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }

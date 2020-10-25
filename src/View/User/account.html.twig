@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<h1>Account {{ user.email }}</h1>
+{{dump(user)}}
+{{dump(adopter)}}
+{{dump(animals)}}
+<a href="/user/edit/" class="btn btn-sm btn-warning my-2"><i class="fas fa-edit"></i></a>
+{# <a href="/user/delete/" class="btn btn-sm btn-danger my-2"><i class="fas fa-trash"> Supprimer mon profil</i></a> #}
+{% endblock %}
