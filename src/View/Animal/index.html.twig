@@ -10,6 +10,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Image</th>
             <th scope="col">Age</th>
             <th scope="col">Tattoo</th>
             <th scope="col">Is_sterilized</th>
@@ -26,6 +27,7 @@
         <tr>
             <td>{{ animal.id }}</td>
             <td>{{ animal.name }}</td>
+            <td><img src="{{ animal.image }}" class="img-fluid" alt=""></td>
             <td>{{ animal.age }}</td>
             <td>{{ animal.tattoo }}</td>
             <td>{{ animal.is_sterilized ? 'Yes' : 'No' }}</td>

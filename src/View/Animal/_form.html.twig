@@ -1,5 +1,4 @@
 <form method="post">
-    {{dump(animal)}}
     <input type="hidden" value="{{ animal.id }}" name="id">
     <div class="form-group">
         <label for="name">Name</label>
@@ -37,15 +36,37 @@
     </div>
     <div class="form-group">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="is_sterilized" value="true"
-                name="is_sterilized" {{animal.is_sterilized ? 'checked' : ''}}>
+            <input class="form-check-input" type="checkbox" id="is_sterilized" value="true" name="is_sterilized"
+                {{animal.is_sterilized ? 'checked' : ''}}>
             <label class="form-check-label" for="is_sterilized">is_sterilized</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="is_vaccined" value="true" 
-                name="is_vaccined" {{animal.is_vaccined ? 'checked' : ''}}>
+            <input class="form-check-input" type="checkbox" id="is_vaccined" value="true" name="is_vaccined"
+                {{animal.is_vaccined ? 'checked' : ''}}>
             <label class="form-check-label" for="is_vaccined">is_vaccined</label>
         </div>
     </div>
+    {% if images is defined %}
+        {% for i in range(0, 2) %}
+            {% if images[i] is defined %}
+            <div class="form-group" id="images">
+                <label for="image_id_{{i + 1}}">Image {{i + 1}}</label>
+                <input type="text" class="form-control animal-image" id="image_id_{{i + 1}}" value="{{ images[i].url }}" name="image{{i + 1}}">
+                <input type="hidden" value="{{ images[i].id }}" name="image_id_{{i + 1}}">
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+    <div class="form-group" id="images">
+        <label for="image">Image 1</label>
+        <input type="text" class="form-control" id="image" value="" name="image1">
+    </div>
+    {% endif %}
+    {% if images|length < 3 %}
+    <div class="form-group">
+        <a href="#" onclick="addInputImage()" class="btn btn-sm btn-primary mt-2" id="btn-add-image">Add image <i
+                class="fas fa-plus-circle"></i></a>
+    </div>
+    {% endif %}
     <button type="submit" value="Valider" class="btn btn-primary">Submit</button>
 </form>

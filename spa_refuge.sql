@@ -84,5 +84,14 @@ ALTER TABLE race ADD CONSTRAINT FK_race_species FOREIGN KEY (species_id) REFEREN
 INSERT INTO refuge (`name`, `address`) VALUES ('SPA Paris', 'La Fayette, Paris 10');
 INSERT INTO refuge (`name`, `address`) VALUES ('SPA Marseille', 'Jaures, Marseille 4');
 
+--
+-- Init 2 images
+--
 
+CREATE TABLE `image` (
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `animal_id` int(11) NOT NULL,
+  `url` varchar(255) NOT NULL
+);
 
+ALTER TABLE image ADD CONSTRAINT FK_image_animal FOREIGN KEY (animal_id) REFERENCES animal (id);

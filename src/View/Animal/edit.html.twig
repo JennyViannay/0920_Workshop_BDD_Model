@@ -7,3 +7,19 @@
         <a href="/animal/show/{{ animal.id }}">Back</a>
     </div>
 {% endblock %}
+{% block javascript %}
+<script>
+    var counter = document.getElementsByClassName('animal-image').length + 1;
+    var divImages = document.getElementById('images');
+    addInputImage = () => {
+        if (counter === 4 )  {
+            document.getElementById('btn-add-image').classList.add('d-none');
+        } else {
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = '<label for="image">Image '+ counter +'</label><input type="text" class="form-control" id="image" value="" name="image'+ counter +'">';      
+            divImages.appendChild(newdiv);
+            counter++;
+        }
+    }
+</script>
+{% endblock %}

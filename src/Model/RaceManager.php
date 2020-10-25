@@ -22,17 +22,17 @@ class RaceManager extends AbstractManager
 
 
     /**
-     * @param array $species
+     * @param array $race
      * @return int
      */
-    public function insert(array $species): int
+    public function insert(array $race): int
     {
         // prepared request
         $statement = $this->pdo->prepare(
             "INSERT INTO " . self::TABLE . " (`name`, `species_id`) VALUES (:name, :species_id)"
         );
-        $statement->bindValue('name', $species['name'], \PDO::PARAM_STR);
-        $statement->bindValue('species_id', $species['species_id'], \PDO::PARAM_INT);
+        $statement->bindValue('name', $race['name'], \PDO::PARAM_STR);
+        $statement->bindValue('species_id', $race['species_id'], \PDO::PARAM_INT);
 
         if ($statement->execute()) {
             return (int) $this->pdo->lastInsertId();
