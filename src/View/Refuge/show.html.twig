@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<h1>refuge {{ refuge.title }}</h1>
+<p>{{ refuge.id }}. {{ refuge.name }} - {{ refuge.address }}</p>
+<a href="/refuge/show/{{ refuge.id }}" class="btn btn-sm btn-success my-2"><i class="fas fa-eye"></i></a>
+<a href="/refuge/edit/{{ refuge.id }}" class="btn btn-sm btn-warning my-2"><i class="fas fa-edit"></i></a>
+<a href="/refuge/delete/{{ refuge.id }}" class="btn btn-sm btn-danger my-2"><i class="fas fa-trash"></i></a>
+{% endblock %}

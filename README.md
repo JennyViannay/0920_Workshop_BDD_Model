@@ -14,15 +14,12 @@ define('APP_DB_PWD', 'your_db_password');
 6. Go to `localhost:8000` with your favorite browser.
 7. From this starter kit, create your own web application.
 
-### Windows Users
-
 
 ## URLs availables
 
 * Home page at [localhost:8000/](localhost:8000/)
-* Items list at [localhost:8000/item/index](localhost:8000/item/index)
-* Item details [localhost:8000/item/index/show/:id](localhost:8000/item/show/2)
-* Item edit [localhost:8000/item/index/edit/:id](localhost:8000/item/edit/2)
-* Item add [localhost:8000/item/index/add](localhost:8000/item/add)
-* Item deletion [localhost:8000/item/index/delete/:id](localhost:8000/item/delete/2)
-
+* Items list at [localhost:8000/refuge/index](localhost:8000/refuge/index)
+* Item details [localhost:8000/refuge/index/show/:id](localhost:8000/refuge/show/2)
+* Item edit [localhost:8000/refuge/index/edit/:id](localhost:8000/refuge/edit/2)
+* Item add [localhost:8000/refuge/index/add](localhost:8000/refuge/add)
+* Item deletion [localhost:8000/refuge/index/delete/:id](localhost:8000/refuge/delete/2)

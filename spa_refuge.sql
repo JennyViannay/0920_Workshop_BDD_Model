@@ -76,3 +76,10 @@ ALTER TABLE animal ADD CONSTRAINT FK_animal_refuge FOREIGN KEY (refuge_id) REFER
 -- FK pour la table `race`
 --
 ALTER TABLE race ADD CONSTRAINT FK_race_species FOREIGN KEY (species_id) REFERENCES species (id);
+
+--
+-- Init 2 refuges
+--
+
+INSERT INTO refuge (`name`, `address`) VALUES ('SPA Paris', 'La Fayette, Paris 10');
+INSERT INTO refuge (`name`, `address`) VALUES ('SPA Marseille', 'Jaures, Marseille 4');
