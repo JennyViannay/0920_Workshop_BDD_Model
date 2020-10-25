@@ -1,6 +1,49 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<div class="row border mt-5 p-3">
+    <h2 class="ml-3">Recherche :</h2>
+    <div class="col-12">
+        <form method="POST">
+            <div class="row">
+                <div class="col-6">
+                    <input class="form-control" type="text" id="search" name="search"
+                        placeholder="Rechercher une race ex : batard">
+                </div>
+                <div class="col-5">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <form method="POST" class="mt-5">
+            <h3>Rechercher par espèce(s)</h3>
+            <div class="row">
+                <div class="col-4 mt-2">
+                    <button type="submit" class="btn btn-sm btn-primary" value="chat">Chiens</button>
+                    <button type="submit" class="btn btn-sm btn-primary" value="chien">Chats</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <form method="POST" class="mt-5">
+            <h3>Rechercher par lieux</h3>
+            <div class="row">
+                <div class="col-4 mt-2">
+                    <button type="submit" class="btn btn-sm btn-primary" value="chat">Paris</button>
+                    <button type="submit" class="btn btn-sm btn-primary" value="chien">Marseille</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
+        <div class="text-right">
+            <a href="/">Tous les animaux</a>
+        </div>
+    </div>
+</div>
 <div class="row mt-5">
     {% for animal in animals %}
     <div class="col-lg-4 col-md-6 col-sx-12">

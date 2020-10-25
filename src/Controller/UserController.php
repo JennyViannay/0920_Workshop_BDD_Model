@@ -26,10 +26,11 @@ class UserController extends AbstractController
     {
         $animalManager = new AnimalManager();
         $user = $this->getUser();
+        $animals = $animalManager->selectByAdopter($user['adopter']['id']);
         return $this->twig->render('User/account.html.twig', [
             'user' => $user['user'],
             'adopter' => $user['adopter'],
-            'animals' => $animalManager->selectByAdopter($user['adopter']['id'])
+            'animals' => $animals ? $animals : ''
         ]);
     }
 

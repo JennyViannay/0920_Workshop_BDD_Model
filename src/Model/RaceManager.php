@@ -75,7 +75,7 @@ class RaceManager extends AbstractManager
         return $this->pdo->query('
         SELECT race.id, race.name, race.species_id as species_id, species.name as species_name FROM '
         . $this->table .
-        ' INNER JOIN species ON race.species_id=species.id')->fetchAll();
+        ' INNER JOIN species ON race.species_id=species.id ORDER BY race.name ASC')->fetchAll();
     }
 
     public function selectOneWithDetails(int $id)
@@ -84,7 +84,8 @@ class RaceManager extends AbstractManager
         $statement = $this->pdo->prepare("
         SELECT race.id, race.name, race.species_id as species_id, species.name as species_name FROM 
         $this->table 
-        INNER JOIN species ON race.species_id=species.id WHERE race.id=:id");
+        INNER JOIN species ON race.species_id=species.id WHERE race.id=:id
+        ORDER BY race.name ASC");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 

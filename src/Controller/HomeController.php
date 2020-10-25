@@ -68,10 +68,6 @@ class HomeController extends AbstractController
      * Adopting animal informations specified by $id
      *
      * @param int $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
      */
     public function adopting(int $id)
     {
@@ -79,7 +75,7 @@ class HomeController extends AbstractController
             $animalManager = new AnimalManager();
             $animal = $animalManager->selectOneWithDetails($id);
             $createdAt = date('Y-m-d H:i:s', $timestamp = time());
-            $animal = [@@       
+            $animal = [      
                 'id' => $id,
                 'adopted_on' => $createdAt,
                 'adopter_id' => $_SESSION['user']->adopter_id
@@ -89,9 +85,25 @@ class HomeController extends AbstractController
         } else {
             header('Location:/security/login');
         }
+    }
 
-        return $this->twig->render('Home/adopting.html.twig',[
-            'animal' => $animal
+    /**
+     * Succes Adopting animal informations specified by $id
+     *
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function success(int $id)
+    {
+        $animalManager = new AnimalManager();
+        $animal = $animalManager->selectOneWithDetails($id);
+        $images = $animalManager->getImagesAnimal($id);
+        return $this->twig->render('Home/success.html.twig',[
+            'animal' => $animal,
+            'image' => $images[0]
         ]);
     }
 }

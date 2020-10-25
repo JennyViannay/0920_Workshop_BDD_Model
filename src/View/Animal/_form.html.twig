@@ -15,10 +15,10 @@
     <div class="form-group">
         <label for="species">Select race</label>
         <select class="form-control" id="race_id" name="race_id">
-            <option value={{animal.race_id}}>{{animal.race_name}}</option>
+            <option value={{animal.race_id}}>{{animal.race_name}} </option>
             {% for race in races %}
             {% if race.id != animal.race_id %}
-            <option value={{race.id}}>{{race.name}}</option>
+            <option value={{race.id}}>{{race.name}} - {{race.species_name}}</option>
             {% endif %}
             {% endfor %}
         </select>

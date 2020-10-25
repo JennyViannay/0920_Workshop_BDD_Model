@@ -26,34 +26,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                {% if session.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/account/">Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/security/logout">Logout</a>
-                </li>
-                {% else %}
+                {% if session.user is not defined %}
                 <li class="nav-item">
                     <a class="nav-link" href="/security/login">Login</a>
                 </li>
                 {% endif %}
-                {% if session.user.role_id == 1 %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
-                    </a>
-                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                        <a href="/refuge/index" class="nav-link">Refuges</a>
-                        <a href="/species/index" class="nav-link">Species</a>
-                        <a href="/race/index" class="nav-link">Race</a>
-                        <a href="/adopter/index" class="nav-link">Adopter</a>
-                        <a href="/animal/index" class="nav-link">Animals</a>
-                    </div>
-                </li>
-                {% endif %}
             </ul>
+            <div class="navbar-nav">
+                {% if session.user.role_id == 1 %}
+                <a href="/refuge/index" class="nav-link">Refuges</a>
+                <a href="/species/index" class="nav-link">Species</a>
+                <a href="/race/index" class="nav-link">Race</a>
+                <a href="/adopter/index" class="nav-link">Adopter</a>
+                <a href="/animal/index" class="nav-link">Animals</a>
+                {% endif %}
+                {% if session.user %}
+                <a class="nav-link" href="/user/account/">Mon compte</a>
+                <a class="nav-link" href="/security/logout"><i class="fas fa-sign-out-alt"></i></a>
+                {% endif %}
+            </div>
         </div>
     </nav>
     <div class="container">

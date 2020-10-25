@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h2 class="text-center my-5">Felicitation vous avez adopté {{animal.name}}</h2>
+    <img src="{{image.url}}" alt="{{animal.name}}" class="img-fluid m-auto">
+    <div class="text-center mt-5">
+        <a href="/home/show/{{animal.id}}">Voir la fiche complète</a>
+    </div>
+{% endblock %}
