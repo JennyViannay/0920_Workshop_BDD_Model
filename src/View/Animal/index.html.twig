@@ -1,47 +1,39 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
 {% block content %}
-<h2 class="display-4">Animals :</h2>
+<h2 class="display-4 font-weight-bold text-dead">Animals :</h2>
 <div class="text-right my-3">
-    <a href="/animal/add" class="btn btn-sm btn-primary">New <i class="fas fa-plus-circle"></i></a>
+    <a href="/animal/add" class="btn btn-sm btn-dead">New <i class="fas fa-plus-circle"></i></a>
 </div>
-<table class="table table-dark">
-    <thead>
+<table class="table bg-darkness text-white box-shadow">
+    <thead class="text-center">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Image</th>
             <th scope="col">Age</th>
-            <th scope="col">Tattoo</th>
-            <th scope="col">Is_sterilized</th>
-            <th scope="col">Is_vaccined</th>
-            <th scope="col">Race_id</th>
-            <th scope="col">Refuge_id</th>
-            <th scope="col">Adopter_id</th>
-            <th scope="col">Adopted_on</th>
-            <th scope="col">Action</th>
+            <th scope="col">Race</th>
+            <th scope="col">Refuge</th>
+            <th scope="col">Adopted</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
         {% for animal in animals %}
         <tr>
             <td>{{ animal.id }}</td>
             <td>{{ animal.name }}</td>
-            <td><img src="{{ animal.image }}" class="img-fluid" alt=""></td>
+            <td><img src="{{ animal.image }}" class="img-fluid" alt="" style="max-width: 100px"></td>
             <td>{{ animal.age }}</td>
-            <td>{{ animal.tattoo }}</td>
-            <td>{{ animal.is_sterilized ? 'Yes' : 'No' }}</td>
-            <td>{{ animal.is_vaccined ? 'Yes' : 'No'}}</td>
             <td>{{ animal.race_name }}</td>
             <td>{{ animal.refuge_name }}</td>
-            <td>{{ animal.adopter_id }}</td>
-            <td>{{ animal.adopted_on }}</td>
+            <td>{{ animal.adopted_on|date('d-m-Y') }}</td>
             <td>
-                <a href="/animal/show/{{ animal.id }}" class="btn btn-sm btn-success my-2"><i
-                        class="fas fa-eye"></i></a>
-                <a href="/animal/edit/{{ animal.id }}" class="btn btn-sm btn-warning my-2"><i
-                        class="fas fa-edit"></i></a>
-                <a href="/animal/delete/{{ animal.id }}" class="btn btn-sm btn-danger my-2"><i
+                <a href="/animal/show/{{ animal.id }}" class="btn btn-sm btn-dead my-2"><i
+                        class="fas fa-book-reader"></i></a>
+                <a href="/animal/edit/{{ animal.id }}" class="btn btn-sm btn-juice my-2"><i
+                        class="fas fa-pen"></i></a>
+                <a href="/animal/delete/{{ animal.id }}" class="btn btn-sm btn-screem my-2"><i
                         class="fas fa-trash"></i></a>
             </td>
         </tr>

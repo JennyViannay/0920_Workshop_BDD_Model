@@ -1,8 +1,13 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
 {% block content %}
-<h1>Add a new animal</h1>
-{% include 'Animal/_form.html.twig' %}
+<div class="container">
+    <h2 class="font-weight-bold text-dead">Add animal</h2>
+    {% include 'Animal/_form.html.twig' %}
+    <div class="text-right">
+        <a href="/animal/show/{{ animal.id }}">Back</a>
+    </div>
+</div>
 {% endblock %}
 
 {% block javascript %}
@@ -10,11 +15,11 @@
     var counter = 2;
     var divImages = document.getElementById('images');
     addInputImage = () => {
-        if (counter >= 4 )  {
+        if (counter >= 4) {
             document.getElementById('btn-add-image').classList.add('d-none');
         } else {
             var newdiv = document.createElement('div');
-            newdiv.innerHTML = '<label for="image">Image '+ counter +'</label><input type="text" class="form-control" id="image" value="" name="image'+ counter +'">';      
+            newdiv.innerHTML = '<label for="image">Image ' + counter + '</label><input type="text" class="form-control" id="image" value="" name="image' + counter + '">';
             divImages.appendChild(newdiv);
             counter++;
         }

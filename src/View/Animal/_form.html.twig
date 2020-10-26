@@ -1,72 +1,81 @@
 <form method="post">
     <input type="hidden" value="{{ animal.id }}" name="id">
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" value="{{ animal.name }}" name="name">
-    </div>
-    <div class="form-group">
-        <label for="age">Age</label>
-        <input type="text" class="form-control" id="age" value="{{ animal.age }}" name="age">
-    </div>
-    <div class="form-group">
-        <label for="tatoo">Tatoo</label>
-        <input type="text" class="form-control" id="tattoo" value="{{ animal.tattoo }}" name="tattoo">
-    </div>
-    <div class="form-group">
-        <label for="species">Select race</label>
-        <select class="form-control" id="race_id" name="race_id">
-            <option value={{animal.race_id}}>{{animal.race_name}} </option>
-            {% for race in races %}
-            {% if race.id != animal.race_id %}
-            <option value={{race.id}}>{{race.name}} - {{race.species_name}}</option>
-            {% endif %}
-            {% endfor %}
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="species">Select refuge</label>
-        <select class="form-control" id="refuge_id" name="refuge_id">
-            <option value={{animal.refuge_id}}>{{animal.refuge_name}}</option>
-            {% for refuge in refuges %}
-            {% if refuge.id != animal.refuge_id %}
-            <option value={{refuge.id}}>{{refuge.name}}</option>
-            {% endif %}
-            {% endfor %}
-        </select>
-    </div>
-    <div class="form-group">
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="is_sterilized" value="true" name="is_sterilized"
-                {{animal.is_sterilized ? 'checked' : ''}}>
-            <label class="form-check-label" for="is_sterilized">is_sterilized</label>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" value="{{ animal.name }}" name="name">
+            </div>
+            <div class="form-group">
+                <label for="species">Select race</label>
+                <select class="form-control" id="race_id" name="race_id">
+                    <option value={{animal.race_id}}>{{animal.race_name}} </option>
+                    {% for race in races %}
+                    {% if race.id != animal.race_id %}
+                    <option value={{race.id}}>{{race.name}} - {{race.species_name}}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-check form-check-inline">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="is_sterilized" value="true" name="is_sterilized"
+                        {{animal.is_sterilized ? 'checked' : ''}}>
+                    <label class="form-check-label" for="is_sterilized">is_sterilized</label>
+                </div>
+                <input class="form-check-input" type="checkbox" id="is_vaccined" value="true" name="is_vaccined"
+                    {{animal.is_vaccined ? 'checked' : ''}}>
+                <label class="form-check-label" for="is_vaccined">is_vaccined</label>
+            </div>
         </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="is_vaccined" value="true" name="is_vaccined"
-                {{animal.is_vaccined ? 'checked' : ''}}>
-            <label class="form-check-label" for="is_vaccined">is_vaccined</label>
+        <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" id="age" value="{{ animal.age }}" name="age">
+            </div>
+            <div class="form-group">
+                <label for="species">Select refuge</label>
+                <select class="form-control" id="refuge_id" name="refuge_id">
+                    <option value={{animal.refuge_id}}>{{animal.refuge_name}}</option>
+                    {% for refuge in refuges %}
+                    {% if refuge.id != animal.refuge_id %}
+                    <option value={{refuge.id}}>{{refuge.name}}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="tatoo">Tatoo</label>
+                    <input type="text" class="form-control" id="tattoo" value="{{ animal.tattoo }}" name="tattoo">
+                </div>
+            </div>
         </div>
-    </div>
-    {% if images is defined %}
-        {% for i in range(0, 2) %}
+        <div class="col-12">
+            <p class="h4 mb-3">Ajouter des images
+            {% if images|length < 3 %}
+                <a href="#" onclick="addInputImage()" class="btn btn-sm btn-pumpkin mb-3 m-auto" id="btn-add-image">
+                    <i class="fas fa-plus-circle"></i></a>
+            {% endif %}
+            </p>
+            {% if images is defined %}
+            {% for i in range(0, 2) %}
             {% if images[i] is defined %}
             <div class="form-group" id="images">
                 <label for="image_id_{{i + 1}}">Image {{i + 1}}</label>
-                <input type="text" class="form-control animal-image" id="image_id_{{i + 1}}" value="{{ images[i].url }}" name="image{{i + 1}}">
+                <input type="text" class="form-control animal-image" id="image_id_{{i + 1}}" value="{{ images[i].url }}"
+                    name="image{{i + 1}}">
                 <input type="hidden" value="{{ images[i].id }}" name="image_id_{{i + 1}}">
             </div>
             {% endif %}
-        {% endfor %}
-    {% else %}
-    <div class="form-group" id="images">
-        <label for="image">Image 1</label>
-        <input type="text" class="form-control" id="image" value="" name="image1">
+            {% endfor %}
+            {% else %}
+            <div class="form-group" id="images">
+                <label for="image">Image 1</label>
+                <input type="text" class="form-control" id="image" value="" name="image1">
+            </div>
+            {% endif %}
+        </div>
+        <button type="submit" value="Valider" class="btn btn-screem m-auto">Submit</button>
     </div>
-    {% endif %}
-    {% if images|length < 3 %}
-    <div class="form-group">
-        <a href="#" onclick="addInputImage()" class="btn btn-sm btn-primary mt-2" id="btn-add-image">Add image <i
-                class="fas fa-plus-circle"></i></a>
-    </div>
-    {% endif %}
-    <button type="submit" value="Valider" class="btn btn-primary">Submit</button>
 </form>

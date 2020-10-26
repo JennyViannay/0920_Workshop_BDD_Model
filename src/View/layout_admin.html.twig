@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workshop ADMIN{% block title %}{% endblock %}</title>
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/12c728ad22.js" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="/assets/images/favicon.png">
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/simple-sidebar.css" rel="stylesheet">
+    <!-- mon style -->
+    <link rel="stylesheet" href="/assets/css/style_admin.css">
+    {% block stylesheet %}{% endblock %}
+
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-darkness border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading text-red font-weight-bold">Admin Side</div>
+            <div class="list-group list-group-flush">
+                <a href="/animal/index"
+                    class="list-group-item list-group-item-action bg-darkness text-white link-hover"><i
+                        class="fas fa-pencil-ruler text-pumpkin"></i> Animals</a>
+                <a href="/refuge/index"
+                    class="list-group-item list-group-item-action bg-darkness text-white link-hover"><i
+                        class="fas fa-pencil-ruler text-pumpkin"></i> Refuges</a>
+                <a href="/species/index"
+                    class="list-group-item list-group-item-action bg-darkness text-white link-hover"><i
+                        class="fas fa-pencil-ruler text-pumpkin"></i> Species</a>
+                <a href="/race/index"
+                    class="list-group-item list-group-item-action bg-darkness text-white link-hover"><i
+                        class="fas fa-pencil-ruler text-pumpkin"></i> Races</a>
+                <a href="/adopter/index"
+                    class="list-group-item list-group-item-action bg-darkness text-white link-hover"><i
+                        class="fas fa-pencil-ruler text-pumpkin"></i> Adopters</a>
+                <div class="mt-5"></div>
+                <a href="/" class="list-group-item list-group-item-action bg-darkness text-white link-hover"><i
+                        class="fas fa-home text-orange"></i> Home</a>
+                <a href="/user/account"
+                    class="list-group-item list-group-item-action bg-darkness text-white link-hover"><i
+                        class="fas fa-user-circle text-orange"></i> Account</a>
+                <a href="/security/logout"
+                    class="list-group-item list-group-item-action bg-darkness text-white link-hover"><i
+                        class="fas fa-sign-out-alt text-orange"></i> Logout</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button class="btn btn-lg" id="menu-toggle" onclick="faToggle()"><i class="fas fa-broom text-pumpkin"
+                    id="fa-toggle"></i></button>
+            <div class="container-fluid">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script>
+        $('#datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            weekStart: 1,
+            daysOfWeekHighlighted: "6,0",
+            autoclose: true,
+            todayHighlight: true,
+        });
+        $('#datepicker').datepicker("setDate", new Date());
+    </script>
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+    <script>
+        faToggle = () => {
+            var x = document.getElementById("fa-toggle");
+            console.log(x.classList.value)
+            if (x.classList.value === 'fas fa-broom text-pumpkin') {
+                x.classList.value = 'fas fa-ghost text-red'
+            } else {
+                x.classList.value = 'fas fa-broom text-pumpkin'
+            }
+        }
+    </script>
+    {% block javascript %}{% endblock %}
+</body>
+
+</html>

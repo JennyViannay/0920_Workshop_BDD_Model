@@ -1,38 +1,44 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
 {% block content %}
-<div class="card m-auto">
-    <div class="card-body">
-        <h5 class="card-title">{{ animal.name }}</h5>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-xs-12">
-                <p class="card-text">Age : {{animal.age}} Year(s)</p>
-                <p class="card-text">Race : {{animal.race_name}}</p>
-                <p class="card-text">Refuge : {{animal.refuge_name}}</p>
-                <p class="card-text">Tattoo : {{animal.tattoo}}</p>
-                <p class="card-text">Vaccined : {{animal.is_vaccined ? 'Yes' : 'No'}}</p>
-                <p class="card-text">Sterilized : {{animal.is_sterilized ? 'Yes' : 'No'}}</p>
-                <p class="card-text">Adopted : {{animal.adopted_on ? 'Yes' : 'No'}}</p>
-            </div>
-            <div class="col-lg-8 col-md-6 col-xs-12">
-                <div class="row">
-                    {% for image in images %}
-                    <div class="col-lg-4 col-md-6 col-xs-12 my-2 mx-auto">
-                        <img src="{{image.url}}" alt="{{animal.name}}" class="img-fluid">
-                        <a href="/image/delete/{{ animal.id }}/{{ image.id }}" class="btn btn-sm btn-danger my-2"><i
-                            class="fas fa-trash"></i></a>
+<div class="container mt-5">
+    <div class="card m-auto border-0 bg-darkness text-white p-5">
+        <div class="card-body">
+            <h2 class="card-title font-weight-bold text-orange display-4 mb-5">
+                {{ animal.name }}, <small>{{animal.age}} Year(s)</small>
+            </h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <p class="card-text">{{animal.refuge_name}}</p>
+                    <p class="card-text">{{animal.race_name}}</p>
+                    <p class="card-text">Tattoo : {{animal.tattoo}}</p>
+                    <p class="card-text">{{animal.is_vaccined ? 'Vaccined' : 'No Vaccined'}},
+                        {{animal.is_sterilized ? 'Sterilized' : 'No Sterilized'}}</p>
+                    <p class="card-text"></p>
+                    <p class="card-text">{{animal.adopted_on ? 'Adopted' : 'Adopted Me'}}</p>
+                </div>
+                <div class="col-lg-8 col-md-6 col-xs-12">
+                    <div class="row">
+                        {% for image in images %}
+                        <div class="m-auto">
+                            <img src="{{image.url}}" alt="{{animal.name}}" class="img-fluid" style="max-height: 150px">
+                        </div>
+                        <div class="m-auto">
+                            <a href="/image/delete/{{ animal.id }}/{{ image.id }}" class="btn btn-sm btn-screem my-2"><i
+                                    class="fas fa-trash"></i></a>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card-footer text-center">
-        <a href="/animal/show/{{ animal.id }}" class="btn btn-sm btn-success my-2"><i class="fas fa-eye"></i></a>
-        <a href="/animal/edit/{{ animal.id }}" class="btn btn-sm btn-warning my-2"><i class="fas fa-edit"></i></a>
-        <a href="/animal/delete/{{ animal.id }}" class="btn btn-sm btn-danger my-2"><i class="fas fa-trash"></i></a>
-        <a href="/animal/index" class="btn btn-sm btn-outline-primary my-2">back</a>
+        <div class="card-footer text-center bg-darkness">
+            <a href="/animal/show/{{ animal.id }}" class="btn btn-sm btn-dead my-2"><i
+                    class="fas fa-book-reader"></i></a>
+            <a href="/animal/edit/{{ animal.id }}" class="btn btn-sm btn-pumpkin my-2"><i class="fas fa-pen"></i></a>
+            <a href="/animal/delete/{{ animal.id }}" class="btn btn-sm btn-screem my-2"><i class="fas fa-trash"></i></a>
+            <a href="/animal/index" class="btn btn-sm btn-outline-primary my-2">back</a>
+        </div>
     </div>
 </div>
-
 {% endblock %}
