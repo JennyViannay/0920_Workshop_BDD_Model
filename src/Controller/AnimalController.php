@@ -38,7 +38,7 @@ class AnimalController extends AbstractController
             }
         }
         
-        return $this->twig->render('animal/index.html.twig', ['animals' => $allAnimals]);
+        return $this->twig->render('Animal/index.html.twig', ['animals' => $allAnimals]);
     }
 
 
