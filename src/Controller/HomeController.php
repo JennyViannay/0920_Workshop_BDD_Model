@@ -71,7 +71,7 @@ class HomeController extends AbstractController
      */
     public function adopting(int $id)
     {
-        if($_SESSION['user']){
+        if(isset($_SESSION['user'])){
             $animalManager = new AnimalManager();
             $animal = $animalManager->selectOneWithDetails($id);
             $createdAt = date('Y-m-d H:i:s', $timestamp = time());
